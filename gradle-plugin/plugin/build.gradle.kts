@@ -6,9 +6,11 @@ plugins {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
-        vendor.set(JvmVendorSpec.ADOPTOPENJDK)
     }
 }
+
+version = "0.0.1"
+group = "com.azmah.ssh"
 
 dependencies {
     implementation(libs.sshdApacheMina)
@@ -32,6 +34,8 @@ gradlePlugin {
         val sshGradlePlugin by creating {
             id = "com.azmah.ssh"
             implementationClass = "com.azmah.ssh.SSHPlugin"
+            displayName = "Gradle SSH plugin"
+            description = "Plugin to run commands against a remote host using SSH"
         }
     }
     testSourceSets(sourceSets.getByName("functionalTest"))
